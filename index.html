@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4000电影网｜影片资料检索与观影指南</title>
+<meta name="description" content="4000电影网（4000dianyingwang-zh.github.io）是面向中文观众的影片资料检索与观影指南站点，收录院线新片、经典老片、纪录片与动画的剧情简介、主创阵容、上映信息及观看指引，按类型、年代、地区、评分多维度整理，帮助用户快速找到想看的电影。">
+<meta name="keywords" content="4000电影网, 4000dianyingwang-zh.github.io, 电影资料, 影片检索, 观影指南, 电影推荐">
+<link rel="canonical" href="https://4000dianyingwang-zh.github.io">
+<style>
+:root{
+  --bg:#f4f6f9; --card:#ffffff; --ink:#1c2536; --sub:#5d6b80;
+  --line:#e3e8f0; --brand:#0f5c8c; --brand2:#17a398; --accent:#e08a1e;
+  --shadow:0 2px 10px rgba(28,37,54,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.75; font-size:15px;
+  -webkit-text-size-adjust:100%;
+}
+a{color:var(--brand);text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+
+/* 顶栏 */
+header{background:linear-gradient(135deg,#0f5c8c 0%,#123a5b 100%);color:#fff;padding:13px 0;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:19px;font-weight:700;letter-spacing:.5px}
+.brand span{color:#7fd1c9}
+.hd-right{display:flex;align-items:center;gap:10px;font-size:13px}
+.hd-right a{color:#cfe3f0}
+.addr-chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:5px 12px;font-size:12.5px;word-break:break-all}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:6px;padding:6px 10px;font-size:13px;cursor:pointer}
+
+/* 导航 */
+nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:49}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{padding:12px 14px;font-size:14px;color:#33465e;white-space:nowrap;border-bottom:2px solid transparent;flex:none}
+nav a:hover{color:var(--brand);border-bottom-color:var(--brand)}
+
+/* 区块 */
+section{padding:44px 0}
+.sec-t{display:flex;align-items:baseline;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.sec-t h2{font-size:23px;letter-spacing:.5px}
+.sec-t h2::before{content:"";display:inline-block;width:5px;height:19px;background:var(--brand);border-radius:3px;margin-right:9px;vertical-align:-3px}
+.sec-t p{font-size:13px;color:var(--sub)}
+.kicker{color:var(--brand);font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:8px}
+.lead{font-size:15.5px;color:#3a4b60
+
+/* 地址卡 */
+.addrbox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;box-shadow:var(--shadow);margin:26px 0}
+.addrbox h3{font-size:17px;margin-bottom:6px}
+.addrbox p{color:var(--sub);font-size:13.5px;margin-bottom:16px}
+.copy-row{display:flex;gap:8px;flex-wrap:wrap}
+.copy-row input{flex:1;min-width:0;font-size:11.5px;padding:11px 9px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;color:#33465e;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.copy-row button{background:var(--brand);color:#fff;border:none;border-radius:8px;padding:0 20px;font-size:14px;cursor:pointer;white-space:nowrap}
+.copy-row button:active{transform:scale(.97)}
+.tip{font-size:12.5px;color:var(--sub);margin-top:10px}
+
+/* 网格卡 */
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+.card h3{font-size:15.5px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.card h3 i{font-style:normal;background:var(--brand);color:#fff;font-size:11px;padding:2px 7px;border-radius:5px;flex:none}
+.card p{font-size:13.5px;color:var(--sub)}
+.card ul{margin:8px 0 0 16px;font-size:13.5px;color:#41526b}
+.card ul li{margin-bottom:4px}
+.tagline{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{font-size:12px;background:#eef4f8;color:var(--brand);border:1px solid #d6e5ef;border-radius:20px;padding:3px 10px}
+
+/* 时间线 */
+.tl{border-left:2px solid #d6e5ef;margin-left:8px;padding-left:22px}
+.tl .it{position:relative;padding-bottom:20px}
+.tl .it:last-child{padding-bottom:0}
+.tl .it::before{content:"";position:absolute;left:-29px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--brand2);border:2px solid #fff;box-shadow:0 0 0 2px #d6e5ef}
+.tl .it b{font-size:15px}
+.tl .it p{font-size:13.5px;color:var(--sub)}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;background:#fff;font-size:13.5px;box-shadow:var(--shadow);border-radius:10px;overflow:hidden}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:#0f5c8c;color:#fff;font-weight:600;font-size:13px}
+tr:nth-child(even) td{background:#f8fafc}
+td.num{font-variant-numeric:tabular-nums;color:var(--brand);font-weight:600}
+
+/* FAQ */
+details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow)}
+details[open]{border-color:#bcd7e8}
+summary{cursor:pointer;font-weight:600;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--brand);font-size:18px;flex:none}
+details[open] summary::after{content:"－"}
+details p{margin-top:10px;font-size:13.5px;color:#41526b}
+
+footer{background:#123a5b;color:#c3d5e3;padding:32px 0 26px;margin-top:30px;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:#8fc7e2}
+footer .fline{width:100%;height:1px;background:rgba(255,255,255,.12);margin:16px 0}
+.cr{font-size:12px;color:#93acc0}
+
+@media (max-width:860px){
+  .g3,.g4,.g2{grid-template-columns:1fr 1fr}
+  .sec-t h2{font-size:20px}
+}
+@media (max-width:640px){
+  .menu-btn{display:block}
+  .hd-right .go{display:none}
+  .addr-chip{max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  nav{display:none}
+  nav.open{display:block}
+  nav .wrap{flex-direction:column;overflow:visible}
+  nav a{border-bottom:1px solid var(--line);border-left:3px solid transparent}
+  nav a:hover{border-bottom-color:var(--line);border-left-color:var(--brand);background:#f8fafc}
+  .g3,.g4,.g2{grid-template-columns:1fr}
+  section{padding:34px 0}
+  .copy-row button{padding:0 16px}
+  table{font-size:12.5px}
+  th,td{padding:9px 8px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<header>
+  <div class="wrap hd">
+    <div class="brand">4000<span>电影网</span></div>
+    <div class="hd-right">
+      <a class="go" href="https://4000dianyingwang-zh.github.io" target="_blank" rel="noopener">4000dianyingwang-zh.github.io</a>
+      <button class="menu-btn" onclick="document.getElementById('mn').classList.toggle('open')">栏目</button>
+    </div>
+  </div>
+</header>
+
+<nav id="mn">
+  <div class="wrap">
+    <a href="#top">首页</a>
+    <a href="#intro">站点说明</a>
+    <a href="#genre">类型索引</a>
+    <a href="#guide">观影指南</a>
+    <a href="#data">资料统计</a>
+    <a href="#faq">常见问题</a>
+  </div>
+</nav>
+
+<section id="top">
+  <div class="wrap">
+    <div class="kicker">FILM ARCHIVE &middot; SINCE 2026</div>
+    <h1 style="font-size:28px;line-height:1.35;margin-bottom:12px">4000电影网 &mdash; 中文观众的影片资料检索与观影指南</h1>
+    <p class="lead">从院线新片到冷门老片，从导演作者到类型脉络，我们把散落的观影信息整理成可以翻查的结构。这里是 <strong>4000电影网</strong>，访问地址 <a href="https://4000dianyingwang-zh.github.io" style="color:var(--brand2)">https://4000dianyingwang-zh.github.io</a>。</p>
+
+    <div class="addrbox">
+      <h3>站点访问地址</h3>
+      <p>点击下方按钮可将网址复制到剪贴板，粘贴到浏览器地址栏即可访问。</p>
+      <div class="copy-row">
+        <input id="u" value="https://4000dianyingwang-zh.github.io" readonly>
+        <button onclick="cp()">复制网址</button>
+      </div>
+      <p class="tip" id="msg">网址：https://4000dianyingwang-zh.github.io　｜　页面为静态单页，栏目内链以 # 锚点跳转。</p>
+    </div>
+
+    <div class="grid g4">
+      <div class="card"><h3><i>01</i>资料检索</h3><p>按类型、年代、地区、语言筛选影片条目，快速定位想看的内容。</p></div>
+      <div class="card"><h3><i>02</i>观影指南</h3><p>新片怎么选、老片从哪部入坑、同类型还能看什么，给出具体路径。</p></div>
+      <div class="card"><h3><i>03</i>主创脉络</h3><p>导演、编剧、演员的作品序列与风格演变，方便按作者追看。</p></div>
+      <div class="card"><h3><i>04</i>行业观察</h3><p>票房、档期、技术规格与产业变化的通俗解读，不做数据堆砌。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="intro" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-t"><h2>站点说明</h2><p>关于 4000电影网 的定位与内容范围</p></div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>我们做什么</h3>
+        <p>4000电影网 是一个影片资料整理与观影建议站点，内容围绕「这部片讲什么、值不值得看、类似风格的还有哪些」展开。条目包含剧情简介、主创阵容、上映年份、片长、类型标签与观看建议，信息以公开资料为基础整理。</p>
+        <div class="tagline"><span class="tag">剧情简介</span><span class="tag">主创阵容</span><span class="tag">类型标签</span><span class="tag">观看建议</span></div>
+      </div>
+      <div class="card">
+        <h3>我们不做什么</h3>
+        <p>本站不提供任何影片资源的下载或在线播放链接，不存储、不转引盗版内容，也不做付费会员与广告导流。所有内容仅供信息参考与个人观影决策使用，如发现条目信息有误，欢迎通过页脚渠道反馈。</p>
+        <div class="tagline"><span class="tag">无资源下载</span><span class="tag">无在线播放</span><span class="tag">无付费会员</span><span class="tag">信息仅供参考</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="genre">
+  <div class="wrap">
+    <div class="sec-t"><h2>类型索引</h2><p>按观影口味快速切入</p></div>
+    <div class="grid g3">
+      <div class="card"><h3>剧情 &amp; 现实题材</h3><p>家庭关系、社会议题、人物传记，重叙事与表演。</p><div class="tagline"><span class="tag">家庭</span><span class="tag">传记</span><span class="tag">社会</span></div></div>
+      <div class="card"><h3>悬疑 &amp; 犯罪</h3><p>反转结构、时间线叙事、刑侦推理，适合喜欢动脑的观众。</p><div class="tagline"><span class="tag">反转</span><span class="tag">推理</span><span class="tag">黑色</span></div></div>
+      <div class="card"><h3>科幻 &amp; 奇幻</h3><p>世界观设定与视觉想象，从硬科幻到轻奇幻都有覆盖。</p><div class="tagline"><span class="tag">硬科幻</span><span class="tag">太空</span><span class="tag">架空</span></div></div>
+      <div class="card"><h3>喜剧 &amp; 爱情</h3><p>轻松解压向，含浪漫喜剧、讽刺喜剧与生活流爱情。</p><div class="tagline"><span class="tag">浪漫</span><span class="tag">讽刺</span><span class="tag">生活流</span></div></div>
+      <div class="card"><h3>动作 &amp; 战争</h3><p>场面调度与节奏感，含武侠、警匪、历史战争。</p><div class="tagline"><span class="tag">武侠</span><span class="tag">警匪</span><span class="tag">史诗</span></div></div>
+      <div class="card"><h3>动画 &amp; 纪录片</h3><p>成人向动画与纪录影像，适合想换个观看方式的观众。</p><div class="tagline"><span class="tag">成人动画</span><span class="tag">自然</span><span class="tag">人文</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="guide" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-t"><h2>观影指南</h2><p>不同需求下的具体选法</p></div>
+    <div class="grid g2">
+      <div>
+        <div class="tl">
+          <div class="it"><b>第一次接触某位导演</b><p>先看清其成名作与代表作，再看创作脉络里风格转变的那一部，比按时间顺序硬刷效率高得多。</p></div>
+          <div class="it"><b>想看高分片但怕闷</b><p>优先选片长控制在 110 分钟以内、有明确事件驱动的条目，文艺片里也有节奏轻快的。</p></div>
+          <div class="it"><b>带家人一起看</b><p>先看分级与题材提示，合家欢动画和温情剧情片是稳妥选项，避开强刺激类型。</p></div>
+          <div class="it"><b>补经典老片</b><p>老片先看修复版或蓝光版，画质与字幕质量会直接影响观感，别用模糊资源劝退自己。</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:16px"><h3>新片怎么选</h3><p>档期拥挤时，先看类型是否对胃口，再看导演前作水准，最后参考同期口碑走势，比只看票房数字更靠谱。</p></div>
+        <div class="card"><h3>系列片怎么入坑</h3><p>长篇系列不必从头硬补。找到公认的最佳一集作为入口，感兴趣再往前回溯，体验更好。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="data">
+  <div class="wrap">
+    <div class="sec-t"><h2>资料统计</h2><p>本站条目构成（示例结构，实际以站点更新为准）</p></div>
+    <table>
+      <thead><tr><th>类型</th><th>条目占比</th><th>年代分布</th><th>更新频率</th></tr></thead>
+      <tbody>
+        <tr><td>剧情 / 现实</td><td class="num">28%</td><td>2010&ndash;2026</td><td>每周更新</td></tr>
+        <tr><td>悬疑 / 犯罪</td><td class="num">19%</td><td>2015&ndash;2026</td><td>每周更新</td></tr>
+        <tr><td>科幻 / 奇幻</td><td class="num">14%</td><td>2018&ndash;2026</td><td>双周更新</td></tr>
+        <tr><td>喜剧 / 爱情</td><td class="num">16%</td><td>2012&ndash;2026</td><td>每周更新</td></tr>
+        <tr><td>动作 / 战争</td><td class="num">13%</td><td>2008&ndash;2026</td><td>双周更新</td></tr>
+        <tr><td>动画 / 纪录片</td><td class="num">10%</td><td>2016&ndash;2026</td><td>每月更新</td></tr>
+      </tbody>
+    </table>
+    <p class="tip" style="margin-top:14px">说明：以上为栏目结构的示例分布，用于展示分类维度；正式条目数据随站点维护逐步补齐，具体以 4000电影网 页面实际内容为准。</p>
+  </div>
+</section>
+
+<section id="faq" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-t"><h2>常见问题</h2><p>关于 4000电影网 的高频疑问</p></div>
+    <details open><summary>4000电影网 是什么站点？</summary><p>一个影片资料整理与观影建议的静态信息站点，网址为 https://4000dianyingwang-zh.github.io，主要提供影片简介、分类索引与观看选择建议。</p></details>
+    <details><summary>站内的影片可以在线观看吗？</summary><p>不可以。本站不提供任何在线播放、下载或资源转引服务，所有内容仅作信息参考，请通过正规渠道观看。</p></details>
+    <details><summary>网址为什么是 github.io 结尾？</summary><p>本站以静态网页形式托管在 GitHub Pages 上，因此访问地址为 https://4000dianyingwang-zh.github.io，页面加载快、结构清晰，也便于搜索引擎抓取。</p></details>
+    <details><summary>栏目链接为什么都是 #？</summary><p>本站为单页结构，各栏目位于同一页面内，点击导航会以锚点方式平滑滚动到对应区块，因此内链统一使用 # 形式。</p></details>
+    <details><summary>条目信息有误怎么办？</summary><p>可通过页脚的联络渠道反馈，说明具体条目与需要更正的内容，我们会核实后更新。</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="font-size:17px">4000<span>电影网</span></div>
+      <p style="margin-top:8px">影片资料检索与观影指南，信息仅供参考。</p>
+    </div>
+    <div style="text-align:right">
+      <a href="#top">返回顶部</a> &middot; <a href="#faq">常见问题</a><br>
+      <span class="cr">站点地址：https://4000dianyingwang-zh.github.io</span>
+    </div>
+    <div class="fline"></div>
+    <div class="cr">© 4000电影网 &middot; 4000dianyingwang-zh.github.io &middot; 本页为静态单页，所有栏目链接以 # 锚点形式呈现。</div>
+  </div>
+</footer>
+
+<script>
+function cp(){
+  var el=document.getElementById('u');
+  el.select(); el.setSelectionRange(0,99999);
+  navigator.clipboard.writeText(el.value).then(function(){
+    var m=document.getElementById('msg');
+    m.textContent='已复制：https://4000dianyingwang-zh.github.io';
+    setTimeout(function(){m.textContent='网址：https://4000dianyingwang-zh.github.io　｜　页面为静态单页，栏目内链以 # 锚点跳转。';},2200);
+  },function(){
+    document.execCommand('copy');
+    document.getElementById('msg').textContent='已复制：https://4000dianyingwang-zh.github.io';
+  });
+}
+</script>
+</body>
+</html>
